@@ -1,5 +1,7 @@
 package allocationMethods;
 
+import java.util.ArrayList;
+
 import fileSystem.Directory;
 import fileSystem.File;
 import Memory.MemoryManager;
@@ -49,8 +51,12 @@ public class ContiguousAllocation extends AllocationMethod{
 	public Boolean deleteFile(String path) {
 		Directory parent = ROOT.getParentOf(path);
 		if(parent == null)return false;
-		parent.deleteFile(new File(path));
-		return null;
+		ArrayList<Integer> alloc = parent.deleteFile(new File(path));
+		if(alloc == null)return null;
+		for(Integer i: alloc){
+			MEMORY.setUnallocated(i);
+		}
+		return true;
 	}
 
 	@Override
@@ -58,7 +64,7 @@ public class ContiguousAllocation extends AllocationMethod{
 		Directory parent = ROOT.getParentOf(path);
 		if(parent == null)return false;
 		parent.deleteFolder(new Directory(path));
-		return null;
+		return true;
 	}
 
 }

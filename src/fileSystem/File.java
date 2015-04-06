@@ -1,6 +1,7 @@
 package fileSystem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class File {
 	private String filePath;
@@ -23,5 +24,8 @@ public class File {
 	}
 	public String getName(){
 		return filePath;
+	}
+	public List<Integer> getAllocatedBlocks(){
+		return allocatedBlocks;
 	}
 }

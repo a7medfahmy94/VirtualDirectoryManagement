@@ -26,6 +26,7 @@ public class MemoryManager {
 		blocks.set(idx, true);
 	}
 	public void setUnallocated(int idx){
+		totalFree++;
 		blocks.set(idx, false);
 	}
 	public int getTotalFree(){

@@ -52,13 +52,16 @@ public class Directory {
 	public List<File> getFiles(){
 		return files;
 	}
-	public void deleteFile(File f){
+	public ArrayList<Integer> deleteFile(File f){
 		for(int i = 0 ; i < files.size(); ++i){
 			if(files.get(i).getName().equals(f.getName())){
+				ArrayList<Integer> alloc = 
+						(ArrayList<Integer>)files.get(i).getAllocatedBlocks();
 				files.remove(i);
-				return;
+				return alloc;
 			}
 		}
+		return null;
 	}
 	public void deleteFolder(Directory d){
 		for(int i = 0 ; i < folders.size(); ++i){

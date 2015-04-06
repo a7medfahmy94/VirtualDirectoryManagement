@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import allocationMethods.AllocationMethod;
 import allocationMethods.ContiguousAllocation;
+import allocationMethods.IndexedAllocation;
 import Memory.MemoryManager;
 import fileSystem.Directory;
 import fileSystem.File;
@@ -26,8 +27,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		MEMORY = new MemoryManager(MEMORY_SIZE);
 		ROOT = new Directory("/");
-		ALLOCATION_METHOD = new ContiguousAllocation(MEMORY , ROOT);
-		
+//		ALLOCATION_METHOD = new ContiguousAllocation(MEMORY , ROOT);
+		ALLOCATION_METHOD = new IndexedAllocation(MEMORY,ROOT);
 		
 		String user_input = "";
 		Scanner input = new Scanner(System.in);
