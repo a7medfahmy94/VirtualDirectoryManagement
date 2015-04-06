@@ -52,4 +52,13 @@ public class Directory {
 	public List<File> getFiles(){
 		return files;
 	}
+	public void deleteFile(File f){
+		for(int i = 0 ; i < files.size(); ++i){
+			if(files.get(i).getName().equals(f.getName())){
+				files.remove(i);
+				return;
+			}
+		}
+	}
+	
 }

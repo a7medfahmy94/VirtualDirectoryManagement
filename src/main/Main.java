@@ -21,17 +21,6 @@ public class Main {
 		ROOT = new Directory("/");
 		ALLOCATION_METHOD = new ContiguousAllocation(MEMORY , ROOT);
 		
-//		File f = new File("a.txt");
-//		File fa = new File("b.txt");
-//		Directory d = new Directory("home");
-//		Directory data = new Directory("data");
-//		Directory h = new Directory("hala");
-//		ROOT.addFolder(d);
-//		d.addFile(f);
-//		d.addFolder(h);
-//		h.addFolder(data);
-//		h.addFile(fa);
-//		displayDiskStructure();
 		
 		String user_input = "";
 		Scanner input = new Scanner(System.in);
@@ -44,10 +33,14 @@ public class Main {
 			}else if(user_input.startsWith("CreateFolder")){
 				String path = user_input.split(" ")[1];
 				ALLOCATION_METHOD.createFolder(path);
+			}else if(user_input.startsWith("DeleteFile")){
+				String path = user_input.split(" ")[1];
+				ALLOCATION_METHOD.deleteFile(path);
 			}
 			displayDiskStructure();
 			user_input = input.nextLine();
 		}
+		input.close();
 	}
 
 	public static void recursivePrint(Directory dir,int lvl){
