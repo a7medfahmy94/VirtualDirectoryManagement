@@ -60,5 +60,12 @@ public class Directory {
 			}
 		}
 	}
-	
+	public void deleteFolder(Directory d){
+		for(int i = 0 ; i < folders.size(); ++i){
+			if(folders.get(i).toString().equals(d.toString())){
+				folders.remove(i);
+				return;
+			}
+		}
+	}
 }

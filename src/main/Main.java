@@ -36,6 +36,9 @@ public class Main {
 			}else if(user_input.startsWith("DeleteFile")){
 				String path = user_input.split(" ")[1];
 				ALLOCATION_METHOD.deleteFile(path);
+			}else if(user_input.startsWith("DeleteFolder")){
+				String path = user_input.split(" ")[1];
+				ALLOCATION_METHOD.deleteFolder(path);
 			}
 			displayDiskStructure();
 			user_input = input.nextLine();

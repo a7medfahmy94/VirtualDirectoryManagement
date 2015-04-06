@@ -55,7 +55,9 @@ public class ContiguousAllocation extends AllocationMethod{
 
 	@Override
 	public Boolean deleteFolder(String path) {
-		// TODO Auto-generated method stub
+		Directory parent = ROOT.getParentOf(path);
+		if(parent == null)return false;
+		parent.deleteFolder(new Directory(path));
 		return null;
 	}
 
