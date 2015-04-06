@@ -15,6 +15,13 @@ public class Main {
 	private static int MEMORY_SIZE = 1000;
 	private static Directory ROOT;
 	
+	private static String create_file = "CreateFile";
+	private static String create_folder = "CreateFolder";
+	private static String delete_file = "DeleteFile";
+	private static String delete_folder = "DeleteFolder";
+	private static String display_disk_structure = "DisplayDiskStructure";
+	private static String display_disk_status = "DisplayDiskStatus";
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MEMORY = new MemoryManager(MEMORY_SIZE);
@@ -26,21 +33,24 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		user_input = input.nextLine();
 		while(!user_input.equals("exit")){
-			if(user_input.startsWith("CreateFile")){
+			if(user_input.startsWith(create_file)){
 				String path = user_input.split(" ")[1];
 				int sz = Integer.valueOf(user_input.split(" ")[2]);
 				ALLOCATION_METHOD.createFile(path, sz);
-			}else if(user_input.startsWith("CreateFolder")){
+			}else if(user_input.startsWith(create_folder)){
 				String path = user_input.split(" ")[1];
 				ALLOCATION_METHOD.createFolder(path);
-			}else if(user_input.startsWith("DeleteFile")){
+			}else if(user_input.startsWith(delete_file)){
 				String path = user_input.split(" ")[1];
 				ALLOCATION_METHOD.deleteFile(path);
-			}else if(user_input.startsWith("DeleteFolder")){
+			}else if(user_input.startsWith(delete_folder)){
 				String path = user_input.split(" ")[1];
 				ALLOCATION_METHOD.deleteFolder(path);
+			}else if(user_input.startsWith(display_disk_status)){
+				MEMORY.displayDiskStatus();
+			}else if(user_input.startsWith(display_disk_structure)){
+				displayDiskStructure();
 			}
-			displayDiskStructure();
 			user_input = input.nextLine();
 		}
 		input.close();

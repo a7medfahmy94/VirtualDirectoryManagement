@@ -22,6 +22,7 @@ public class MemoryManager {
 		}
 	}
 	public void setAllocated(int idx){
+		totalFree--;
 		blocks.set(idx, true);
 	}
 	public void setUnallocated(int idx){
@@ -40,6 +41,10 @@ public class MemoryManager {
 		return blocks;
 	}
 	public void displayDiskStatus(){
-		
+		System.out.println("=====MEMORY=====");
+		System.out.println("=====Free Space=====");
+		System.out.println("Total : " + String.valueOf(totalFree));
+		System.out.println("=====Allocated Space=====");
+		System.out.println("Total : " + String.valueOf(totalSize-totalFree));
 	}
 }
