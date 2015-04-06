@@ -1,6 +1,7 @@
 package fileSystem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Directory {
 	private ArrayList<File> files;
@@ -13,7 +14,9 @@ public class Directory {
 		folders = new ArrayList<Directory>();
 	}
 	public Directory(String p){
-		this.directoryPath = p;
+		int idx = p.lastIndexOf('/');
+		
+		this.directoryPath = p.substring(idx+1) + "/";
 		files = new ArrayList<File>();
 		folders = new ArrayList<Directory>();
 	}
@@ -24,8 +27,6 @@ public class Directory {
 		return deleted;
 	}
 	public void addFolder(Directory d){
-		d.directoryPath = 
-				directoryPath.concat(d.directoryPath).concat("/");
 		this.folders.add(d);
 	}
 	public void addFile(File f){
@@ -34,5 +35,21 @@ public class Directory {
 	public String toString(){
 		return directoryPath;
 	}
+	public Directory getParentOf(String path){
+		if(!path.startsWith(directoryPath))return null;
+		String rest = path.substring(directoryPath.length());
+		for(Directory d: folders){
+			if(rest.startsWith(d.directoryPath)){
+				return d.getParentOf(rest);
+			}
+		}
+		return this;
+	}
 	
+	public List<Directory> getFolders(){
+		return folders;
+	}
+	public List<File> getFiles(){
+		return files;
+	}
 }

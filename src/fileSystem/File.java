@@ -11,7 +11,8 @@ public class File {
 		this.allocatedBlocks = new ArrayList<Integer>();
 	}
 	public File(String p){
-		this.filePath = p;
+		int idx = p.lastIndexOf('/');
+		this.filePath = p.substring(idx+1);
 		this.allocatedBlocks = new ArrayList<Integer>();
 	}
 	public void addBlock(Integer i){
@@ -20,5 +21,7 @@ public class File {
 	public void delete(){
 		this.deleted = true;
 	}
-	
+	public String getName(){
+		return filePath;
+	}
 }
